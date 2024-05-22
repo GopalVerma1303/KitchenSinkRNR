@@ -12,12 +12,17 @@ import { Text } from "~/components/ui/text";
 import { projectsRoutes } from "../../../lib/project-routes";
 import { Link } from "expo-router";
 
-const { width: screenWidth } = Dimensions.get("window");
-
 export default function HomePage() {
   const renderItem = ({ item, index }: any) => (
-    <Link href={`/${item.id}`} style={styles.projectItem}>
-      <View style={styles.projectContent}>
+    <Link
+      href={`/${item.id}`}
+      className="flex-1 p-2 border-b-[1px] border-b-[#CCCCCC] justify-between items-center"
+    >
+      <View
+        className={`flex-row flex-1 items-center justify-between p-2 ${
+          Platform.OS === "web" ? "w-full" : "w-[calc(100vw)]"
+        }`}
+      >
         <View style={styles.textContainer}>
           <Text style={styles.projectTitle}>
             {`${index + 1}. ${item.title}`}
@@ -32,8 +37,8 @@ export default function HomePage() {
   );
 
   return (
-    <View style={[styles.container]}>
-      <View style={styles.main}>
+    <View className="flex-1">
+      <View>
         {/* <Text style={styles.title}>KitchenSink</Text> */}
         {/* <Text style={styles.subtitle}> */}
         {/*   For all the projects of Engineer Codewala. */}
@@ -50,45 +55,6 @@ export default function HomePage() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingBottom: 0,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "flex-start",
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 18,
-    color: "#38434D",
-    marginBottom: 20,
-  },
-  flatListContainer: {
-    paddingBottom: 0,
-  },
-  projectItem: {
-    width: "100%",
-    padding: 10,
-    paddingHorizontal: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: "#CCCCCC",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  projectContent: {
-    width: Platform.OS === "web" ? "100%" : screenWidth - 0,
-    paddingLeft: 16,
-    paddingRight: 10,
-    // width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
   textContainer: {
     flex: 1,
   },
