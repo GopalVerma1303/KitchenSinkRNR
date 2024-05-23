@@ -1,73 +1,30 @@
 import React from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { settingsOptions } from "../../../lib/setting-options.ts";
+import { TouchableOpacity, View, FlatList } from "react-native";
+import { Text } from "../../../components/ui/text";
+import { FontAwesome } from "@expo/vector-icons";
+import { settingsOptions } from "../../../lib/setting-options";
+import { FlashList } from "@shopify/flash-list";
 
-export default function SettingsPage() {
-  const renderSettingItem = ({ item }) => (
-    <TouchableOpacity style={styles.settingsItem}>
-      <FontAwesome name={item.icon} size={24} color="#333" />
-      <Text style={styles.settingsItemText}>{item.title}</Text>
-    </TouchableOpacity>
-  );
-
+const SettingsScreen = () => {
   return (
-    <View
-      style={[
-        styles.container,
-        (Platform.OS === "android" || Platform.OS === "ios") && {
-          paddingTop: 80,
-        },
-      ]}
-    >
-      <View style={styles.main}>
-        <Text style={styles.title}>Settings</Text>
-
-        <FlatList
-          data={settingsOptions}
-          renderItem={renderSettingItem}
-          keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={styles.settingsContainer}
-        />
-      </View>
+    <View className="flex-1">
+      <FlashList
+        data={settingsOptions}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity className="flex-row items-center p-4 border-b-[0.5px] border-border">
+            <FontAwesome
+              name={item.icon}
+              size={16}
+              color="#666666"
+              className="mr-4"
+            />
+            <Text className="text-[16px]">{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "flex-start",
-    maxWidth: 960,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  settingsContainer: {
-    marginTop: 20,
-  },
-  settingsItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f0f0f0",
-  },
-  settingsItemText: {
-    fontSize: 16,
-    marginLeft: 16,
-  },
-});
+export default SettingsScreen;
