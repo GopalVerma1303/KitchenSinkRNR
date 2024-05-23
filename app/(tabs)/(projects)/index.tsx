@@ -32,13 +32,12 @@ export default function HomePage() {
 
   return (
     <View className="flex-1">
-      <View>
-        <FlashList
-          data={projectsRoutes}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
+      <FlashList
+        estimatedItemSize={10}
+        data={projectsRoutes}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }

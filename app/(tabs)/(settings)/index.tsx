@@ -9,6 +9,7 @@ const SettingsScreen = () => {
   return (
     <View className="flex-1">
       <FlashList
+        estimatedItemSize={10}
         data={settingsOptions}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
