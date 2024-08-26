@@ -1,6 +1,6 @@
 # KitchenSinkRNR
 
-[KitchSink](https://github.com/Engineer-Codewala/KitchenSink) + [react-native-reusables](https://github.com/mrzachnugent/react-native-reusables)
+KitchenSink for [react-native-reusables](https://github.com/mrzachnugent/react-native-reusables)
 
 ## Features
 
