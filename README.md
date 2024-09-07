@@ -10,3 +10,5 @@ KitchenSink for [react-native-reusables](https://github.com/mrzachnugent/react-n
   - Persistant mode
 - Common components
   - ThemeToggle, Avatar, Button, Card, Progress, Text, Tooltip
+
+Enjoy!
